@@ -1,0 +1,19 @@
+view#development {
+    padding: 2rem;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+view#developent img#dev-img {
+    width: 20rem;
+    margin: 0;
+    height: auto;
+}
+
+view#developent h1#dev-title {
+    margin: 1.5rem 0;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            background: #222;
+        }
+
+        #buttonbar {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #url {
+            width: calc(100% - 7rem);
+            height: 30px;
+            background: rgba(255,255,255,.03);
+            color: #fafafa;
+            border: none;
+            border-radius: 5px;
+            padding: .15rem;
+        }
+
+        #post {
+            width: 7rem;
+            border: none;
+            border-radius: 5px;
+            padding: .15rem;
+            margin-left: .5rem;
+            cursor: pointer;
+            color: #fafafa;
+            background: rgb(10,50,255);
+        }
+        #post:hover {
+            opacity: .9;
+        }
+    
+        #content,#params {
+            background: #333;
+            color: #fafafa;
+            border: .1rem solid rgba(0,0,0,.1);
+            margin-top: 1rem;
+            height: calc(50vh - 3rem);
+        }
+    </style>
+</head>
+<body>
+    <div id="buttonbar">
+        <input id="url" placeholder="Fetch Url"></input>
+        <button id="post">POST</button>
+    </div>
+  
+    <textarea id="params"></textarea>
+    <textarea id="content"></textarea>
+</body>
+<script>
+
+    window.onload = () => {
+
+        const contentDiv = document.getElementById("content")
+        const params = document.getElementById("params")
+        const postBtn = document.getElementById("post")
+        const urlIn = document.getElementById("url")
+
+        postBtn.addEventListener("click", () => {
+            fetch(urlIn.value, {
+                method: "POST",
+                body: JSON.stringify(JSON.parse(params.value))
+            })
+            .then(txt => txt.json())
+            .then(data => {
+                contentDiv.value = JSON.stringify(data,null,2)
+            }).catch(err => {
+                contentDiv.value = `<b style='color:crimson;'>${err}</b>`
+                console.log(err)
+            } )
+        } )
+    }
+    
+</script>
+</html>
