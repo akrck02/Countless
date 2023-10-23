@@ -1,7 +1,7 @@
 import { Body, Controller, Put } from '@nestjs/common';
 import { UserService } from './user.service';
-import { RegisterUserDTO as RegisterUserDTO } from 'src/model/registeruserdto';
-import { User } from 'src/schemas/user/user';
+import { RegisterUserDTO as RegisterUserDTO } from 'src/model/dto/registeruserdto';
+import { User } from 'src/model/schema/user/user';
 
 @Controller('users')
 export class UserController {
