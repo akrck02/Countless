@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Countless",
-    "dateExported": "2023-10-23T21:11:24.909Z",
+    "dateExported": "2023-10-28T11:53:00.383Z",
     "version": "1.1",
     "folders": [
         {
@@ -10,6 +10,13 @@
             "containerId": "",
             "created": "2023-10-23T19:41:30.553Z",
             "sortNum": 10000
+        },
+        {
+            "_id": "3e73a935-513e-48e6-be5d-deade49b4aff",
+            "name": "transaction",
+            "containerId": "",
+            "created": "2023-10-24T16:51:01.920Z",
+            "sortNum": 20000
         }
     ],
     "requests": [
@@ -18,16 +25,96 @@
             "colId": "b3bdb3a4-74ce-4eaf-93ec-28f849a2c00f",
             "containerId": "44edd284-a07f-4cd2-9647-b89b46f99a76",
             "name": "register",
-            "url": "http://{{money.host}}:{{money.port}}/users/register",
+            "url": "http://{{countless.host}}:{{countless.port}}/users/register",
             "method": "PUT",
             "sortNum": 10000,
             "created": "2023-10-23T19:41:36.720Z",
-            "modified": "2023-10-23T21:00:41.268Z",
+            "modified": "2023-10-28T11:52:38.953Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n \"name\": \"alberto\",\n \"email\" : \"alberto@mymail.com\",\n \"password\" : \"#Albertiko1999Octssssoddf\"\n}",
+                "raw": "{\n \"name\": \"aketza\",\n \"email\" : \"aketza@mymail.com\",\n \"password\" : \"#Teng0HamberL0l333333\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "cccd1034-0898-46a4-a41c-9004806c5d59",
+            "colId": "b3bdb3a4-74ce-4eaf-93ec-28f849a2c00f",
+            "containerId": "3e73a935-513e-48e6-be5d-deade49b4aff",
+            "name": "register",
+            "url": "http://{{countless.host}}:{{countless.port}}/transactions/register",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2023-10-24T16:51:09.125Z",
+            "modified": "2023-10-28T11:52:22.051Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n \"userId\": \"653825d8e2167cc0fb187243\",\n \"amount\" : 10.99,\n \"type\" : 1,\n \"description\" : \"Naski triple IPA\" \n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjUzODQyOWE3ZTVlMjgyY2NiYzFmMGUzIiwidXNlckFnZW50IjoiVGh1bmRlciBDbGllbnQgKGh0dHBzOi8vd3d3LnRodW5kZXJjbGllbnQuY29tKSIsImFkZHJlc3MiOiI6OmZmZmY6MTI3LjAuMC4xIiwiaWF0IjoxNjk4NDkzODcwLCJleHAiOjE2OTg1ODAyNzB9.XONv0py18l1pfnYgpB6sPmSz4dSvsG9JLajrZY1e330"
+            },
+            "tests": []
+        },
+        {
+            "_id": "a5c04a04-c6b3-439f-857b-72d758ab354b",
+            "colId": "b3bdb3a4-74ce-4eaf-93ec-28f849a2c00f",
+            "containerId": "44edd284-a07f-4cd2-9647-b89b46f99a76",
+            "name": "login",
+            "url": "http://{{countless.host}}:{{countless.port}}/users/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-10-24T20:52:23.637Z",
+            "modified": "2023-10-28T11:51:56.376Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"aketza@mymail.com\",\n  \"password\": \"#Teng0HamberL0l333333\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "6836d3e3-2a03-4567-bfd5-fb704d62887d",
+            "colId": "b3bdb3a4-74ce-4eaf-93ec-28f849a2c00f",
+            "containerId": "3e73a935-513e-48e6-be5d-deade49b4aff",
+            "name": "list/income",
+            "url": "http://{{countless.host}}:{{countless.port}}/transactions/list/income",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-10-24T18:01:03.291Z",
+            "modified": "2023-10-28T11:52:46.033Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user\" : \"653825d8e2167cc0fb187243\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b24fb53a-58b7-4250-88af-93d99a17ed51",
+            "colId": "b3bdb3a4-74ce-4eaf-93ec-28f849a2c00f",
+            "containerId": "3e73a935-513e-48e6-be5d-deade49b4aff",
+            "name": "list/outcome",
+            "url": "http://{{countless.host}}:{{countless.port}}/transactions/list/outcome",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-10-24T18:20:14.427Z",
+            "modified": "2023-10-28T11:52:50.486Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user\" : \"653825d8e2167cc0fb187243\"\n}",
                 "form": []
             },
             "tests": []

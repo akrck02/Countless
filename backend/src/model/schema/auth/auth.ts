@@ -1,9 +1,11 @@
-import { Prop, Schema } from '@nestjs/mongoose';
-import mongoose, { Types } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose, { HydratedDocument, Types } from 'mongoose';
 import { User } from '../user/user';
 
+export type UserDocument = HydratedDocument<Auth>;
+
 @Schema()
-class Auth {
+export class Auth {
   @Prop({ type: mongoose.Schema.Types.ObjectId, ref: User.name })
   user: Types.ObjectId;
 
@@ -20,5 +22,7 @@ class Auth {
   @Prop({
     required: true,
   })
-  UserAgent: string;
+  userAgent: string;
 }
+
+export const AuthSchema = SchemaFactory.createForClass(Auth);

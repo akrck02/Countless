@@ -5,7 +5,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './modules/user.module';
 import { TransactionModule } from './modules/transaction.module';
 import { ConfigModule } from '@nestjs/config';
-import { CryptModule } from './modules/crypt.module';
+import { AuthenticationGuard } from './guard/authentication/authentication.guard';
+import { AuthModule } from './modules/auth.module';
 
 @Module({
   imports: [
@@ -25,8 +26,15 @@ import { CryptModule } from './modules/crypt.module';
     ),
     UserModule,
     TransactionModule,
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: 'APP_GUARD',
+      useClass: AuthenticationGuard,
+    },
+  ],
 })
 export class AppModule {}

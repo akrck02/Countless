@@ -1,7 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { createCipheriv, createDecipheriv, randomBytes, scrypt } from 'crypto';
 import { promisify } from 'util';
+import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
+import { ApiError } from 'src/error/apierror';
+import { AuthErrors } from 'src/error/auth';
+import { StatusCode } from 'src/constant/http';
 
 @Injectable()
 export class CryptService {
@@ -10,6 +14,8 @@ export class CryptService {
   static readonly SALT_STRING = 'salt';
   static readonly SALT_ROUNDS = 32;
   static readonly BYTE_LENGTH = 16;
+
+  constructor(private readonly jwtService: JwtService) {}
 
   async encodeAes256Crt(text: string): Promise<string> {
     const secret = process.env.CRYPT_SECRET;
@@ -56,5 +62,45 @@ export class CryptService {
 
   async compareBcrypt(text: string, text2: string): Promise<boolean> {
     return await bcrypt.compare(text, text2);
+  }
+
+  async createJWT(
+    user: string,
+    userAgent: string,
+    address: string,
+  ): Promise<string> {
+    const payload = { user, userAgent, address };
+    return await this.jwtService.signAsync(payload, {
+      secret: process.env.JWT_SECRET,
+    });
+  }
+
+  async verifyJWT(
+    token: string,
+    user: string,
+    userAgent: string,
+    address: string,
+  ): Promise<void> {
+    let payload: any;
+    try {
+      payload = await this.jwtService.verifyAsync(token, {
+        secret: process.env.JWT_SECRET,
+      });
+    } catch (e) {
+      throw new ApiError(AuthErrors.INVALID_TOKEN, StatusCode.UNAUTHORIZED);
+    }
+
+    if (!payload || !payload.user || !payload.userAgent || !payload.address)
+      throw new ApiError(AuthErrors.INVALID_TOKEN, StatusCode.UNAUTHORIZED);
+
+    if (payload.exp < Date.now() / 1000)
+      throw new ApiError(AuthErrors.TOKEN_EXPIRED, StatusCode.UNAUTHORIZED);
+
+    if (
+      payload.user !== user ||
+      payload.userAgent !== userAgent ||
+      payload.address !== address
+    )
+      throw new ApiError(AuthErrors.UNAUTHORIZED, StatusCode.UNAUTHORIZED);
   }
 }

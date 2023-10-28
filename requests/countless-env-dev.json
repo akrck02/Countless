@@ -1,16 +1,20 @@
 {
     "client": "Thunder Client",
-    "environmentName": "money-dev",
-    "dateExported": "2023-10-23T19:44:46.859Z",
+    "environmentName": "countless-dev",
+    "dateExported": "2023-10-28T11:53:36.745Z",
     "version": "1.0",
     "variables": [
         {
-            "name": "money.host",
+            "name": "countless.host",
             "value": "127.0.0.1"
         },
         {
-            "name": "money.port",
+            "name": "countless.port",
             "value": "3000"
+        },
+        {
+            "name": "countless.auth.token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjUzODQyOWE3ZTVlMjgyY2NiYzFmMGUzIiwidXNlckFnZW50IjoiVGh1bmRlciBDbGllbnQgKGh0dHBzOi8vd3d3LnRodW5kZXJjbGllbnQuY29tKSIsImFkZHJlc3MiOiI6OmZmZmY6MTI3LjAuMC4xIiwiaWF0IjoxNjk4NDkzODcwLCJleHAiOjE2OTg1ODAyNzB9.XONv0py18l1pfnYgpB6sPmSz4dSvsG9JLajrZY1e330"
         }
     ]
 }
