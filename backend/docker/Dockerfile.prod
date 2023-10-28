@@ -1,0 +1,46 @@
+FROM node:18.18.2-alpine3.18
+
+ENV GIT_REPOSITORY="https://github.com/akrck02/Countless"
+ENV MONGO_ADMIN_USERNAME=admin
+ENV MONGO_ADMIN_PASSWORD=p4ssw0rd
+ENV MONGO_PORT=27017
+ENV MONGO_HOST=localhost
+ENV MONGO_DB=countless
+
+ENV CRYPT_SECRET=^C0untl3ss1s4w3s0m3^%asdaAasda3
+ENV JWT_SECRET=837a48dabd13c9795fd20e677c4af9b681e165c30f38df67a1d2170837c71434
+ENV JWT_EXPIRES_IN=1
+
+# Install git 
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+
+# Clone the repository
+RUN mkdir /app
+RUN git clone $GIT_REPOSITORY /app
+
+# Remove the frontend because it is not needed in the backend container
+RUN rm -rf /app/frontend 
+
+# Set the working directory to the backend and install the dependencies
+WORKDIR /app/backend
+RUN npm install
+
+RUN rm -rf docker
+RUN rm -rf test
+
+# Set the environment variables
+RUN echo "MONGO_ADMIN_USERNAME=$MONGO_ADMIN_USERNAME" > .env
+RUN echo "MONGO_ADMIN_PASSWORD=$MONGO_ADMIN_PASSWORD" >> .env
+RUN echo "MONGO_PORT=$MONGO_PORT" >> .env
+RUN echo "MONGO_HOST=$MONGO_HOST" >> .env
+RUN echo "MONGO_DB=$MONGO_DB" >> .env
+
+RUN echo "CRYPT_SECRET=$CRYPT_SECRET" >> .env
+RUN echo "JWT_SECRET=$JWT_SECRET" >> .env
+RUN echo "JWT_EXPIRES_IN=$JWT_EXPIRES_IN" >> .env
+
+# start the backend
+CMD ["npm", "run", "start:prod"]
+
+EXPOSE 3000
