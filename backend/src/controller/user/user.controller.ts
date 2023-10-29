@@ -30,8 +30,6 @@ export class UserController {
     const userAgent = request.headers['user-agent'];
 
     const result = await this.userService.login(user, ip, userAgent);
-    return {
-      token: result,
-    };
+    return result;
   }
 }

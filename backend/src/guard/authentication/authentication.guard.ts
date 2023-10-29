@@ -46,7 +46,7 @@ export class AuthenticationGuard implements CanActivate {
     // 💡 We're assigning the payload to the request object here
     // so that we can access it in our route handlers
     request['user'] = payload;
-    console.log('User accessing:', payload.user);
+    console.log('user accessing:', payload.user);
 
     await this.authService.checkToken(
       payload.user,

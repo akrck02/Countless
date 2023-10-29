@@ -37,6 +37,7 @@ services:
     networks:
       - countless-dev
     environment:
+      GIT_REPOSITORY: ${GIT_REPOSITORY}
       MONGO_ADMIN_USERNAME: ${MONGO_ADMIN_USERNAME}
       MONGO_ADMIN_PASSWORD: ${MONGO_ADMIN_PASSWORD}
       MONGO_PORT: ${MONGO_PORT}

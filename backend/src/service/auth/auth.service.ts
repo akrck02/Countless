@@ -53,6 +53,10 @@ export class AuthService {
     userAgent: string,
     token: string,
   ): Promise<void> {
+    console.log('user', user);
+    console.log('address', address);
+    console.log('userAgent', userAgent);
+
     const authModel = await this.authModel.findOne({
       user: new Types.ObjectId(user),
       address: address,
