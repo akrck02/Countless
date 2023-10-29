@@ -1,0 +1,13 @@
+@import url("./BubbleUI-v2.0.1.css");
+@import url("./components/_import.css");
+@import url("./views/_import.css");
+
+:root {
+    --accent-color : #8155FF;
+    --secondary-color : #F1EAFF;
+    --secondary-text-color : #898989;
+}
+
+.accent-hover:hover{
+    color: var(--accent-color);
+}

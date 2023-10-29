@@ -1,0 +1,46 @@
+{
+ 
+    "base" : {
+        "app_name" : "Countless",
+        "app_version" : "v1.0.0",
+        "host" : "127.0.0.1",
+        "port" : "80",
+        "enviroment" : "development",
+        "debug" : "true",
+        "log_level" : "debug",
+        "website" : "https://akrck02.github.io/#/software/GTD-Framework",
+        "author" : "akrck02"
+    },
+
+    "path" : {
+        "url" : "..",
+        "app" : "app",
+        "resources" : "resources",
+        "language" : "resources/i18n",
+        "images" : "resources/images",
+        "icons" : "resources/icons"
+    },
+
+    "views" : {
+        "url" : "app/#",
+        "login" : "login",
+        "income" : "transactions/income",
+        "outcome" : "transactions/outcome",
+        "error" : "error",
+        "blank" : "blank"
+    },
+
+    "api" : {
+        "url" : "http://192.168.50.223:3000/",
+        "login" : "users/login",
+        "transactionsListIncome" : "transactions/list/income",
+        "transactionsListOutcome" : "transactions/list/outcome"
+    },
+
+    "variables" : {
+        "animations" : "true",
+        "language" : "es",
+        "theme" : "dark"
+    }
+
+}

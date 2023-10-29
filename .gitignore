@@ -1,3 +1,4 @@
-.env
-mongo-data
+**/mongo-data
 **/node-modules
+.vscode
+**/.env

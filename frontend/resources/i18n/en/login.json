@@ -1,0 +1,9 @@
+{
+    "appName" : "Countless",
+    "title" : "Login",
+    "email" : "Email",
+    "password" : "Password",
+    "login" : "Login",
+    "forgotPassword" : "You forgot the password?",
+    "newUser" : "New user? Click here"
+}

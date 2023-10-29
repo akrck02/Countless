@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Put, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put } from '@nestjs/common';
 import { TransactionListDto } from 'src/model/dto/transaction.list.dto';
 import { TransactionRegisterDto } from 'src/model/dto/transaction.register.dto';
 import { Transaction } from 'src/model/schema/transaction/transaction';
@@ -16,7 +16,7 @@ export class TransactionController {
     return result;
   }
 
-  @Get('list/income')
+  @Post('list/income')
   async listIncome(
     @Body() transactionListDto: TransactionListDto,
   ): Promise<Transaction[]> {
@@ -25,7 +25,7 @@ export class TransactionController {
     return result;
   }
 
-  @Get('list/outcome')
+  @Post('list/outcome')
   async listOutcome(
     @Body() transactionListDto: TransactionListDto,
   ): Promise<Transaction[]> {

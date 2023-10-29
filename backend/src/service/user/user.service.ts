@@ -9,6 +9,7 @@ import { UserLoginDto } from 'src/model/dto/user.login.dto';
 import { StatusCode } from 'src/constant/http';
 import { AuthService } from '../auth/auth.service';
 import { UserErrors } from 'src/error/user';
+import { AuthTokenServeDto } from 'src/model/dto/auth.token.serve.dto';
 
 @Injectable()
 export class UserService {
@@ -45,7 +46,7 @@ export class UserService {
     userLoginDto: UserLoginDto,
     ip: string,
     userAgent: string,
-  ): Promise<string> {
+  ): Promise<AuthTokenServeDto> {
     const user = await this.userModel.findOne({
       email: userLoginDto.email,
     });
@@ -68,6 +69,12 @@ export class UserService {
       ip,
       userAgent,
     );
-    return token;
+
+    const tokenServeDto = {
+      token: token,
+      user: user._id.toString(),
+    };
+
+    return tokenServeDto;
   }
 }
