@@ -26,9 +26,6 @@
     transition: all 0.2s;
 }
 
-#bottombar .primary-button:hover {
-    transform: scale(1.1);
-}
 
 #bottombar .primary-button:active {
     transform: scale(0.9);
@@ -42,12 +39,13 @@
     width: 30%;
     height: 4rem;
     border-radius: 1rem;
-    background-color: transparent;
+    background-color: rgba(0,0,0,0);
     position: absolute;
     bottom: 0rem;
     box-shadow: none;
     color: var(--secondary-text-color);
     font-size: .8rem;
+    transition: background-color var(--medium) ease-in-out;
 }
 
 #bottombar .secondary-button.selected {

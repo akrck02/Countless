@@ -5,13 +5,20 @@ import { Events, IEvents } from "./core/events/Events.js";
 import Keyboard from "./core/events/Keyboard.js";
 import NotificationUI, { NotificationProperties } from "./components/notifications/Notification.js";
 import Initializer from "./core/Initializer.js";
-
+import { ISingleton, Singleton } from "./lib/gtdf/decorators/Singleton.js";
+import { StaticImplements } from "./lib/gtdf/core/static/StaticInterface.js";
 /**
  * Class that represents the application frontend proccess
  * it can be intantiated more than once, but the classic 
  * web application structure wont need it.
  */
+@Singleton()
+@StaticImplements<ISingleton<App>>()
 export default class App {
+
+    static _instance : App;
+    static instance;
+    private static performed : boolean = false;
 
     private router : Router;
     private events : IEvents;
@@ -22,7 +29,7 @@ export default class App {
      */
     constructor(){        
        
-        this.router = new Router();
+        this.router = Router.instance();
         this.events = Events;
         Keyboard.setEventListeners(this.events);
 

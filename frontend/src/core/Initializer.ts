@@ -4,6 +4,7 @@ import { IObserver, Observable } from "../lib/gtdf/core/observable/Observer.js";
 import { Signal } from "../lib/gtdf/core/signals/Signal.js";
 import { Config, Configuration } from "../config/Config.js";
 
+
 export default class Initializer {
 
     private static readonly SIGNAL_ID : string = "init";

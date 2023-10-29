@@ -24,8 +24,8 @@
     "views" : {
         "url" : "app/#",
         "login" : "login",
-        "income" : "income",
-        "outcome" : "outcome",
+        "income" : "transactions/income",
+        "outcome" : "transactions/outcome",
         "error" : "error",
         "blank" : "blank"
     },
@@ -33,7 +33,8 @@
     "api" : {
         "url" : "http://192.168.50.223:3000/",
         "login" : "users/login",
-        "transactions_list_income" : "transactions/list/income"
+        "transactionsListIncome" : "transactions/list/income",
+        "transactionsListOutcome" : "transactions/list/outcome"
     },
 
     "variables" : {

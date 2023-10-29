@@ -1,8 +1,12 @@
 import { Config } from "../../config/Config.js";
 import { getErrorByCode } from "../../config/Errors.js";
 import { UIComponent } from "../../lib/gtdf/components/UIComponent.js";
+import { Route } from "../../lib/gtdf/decorators/Route.js";
+import { Singleton } from "../../lib/gtdf/decorators/Singleton.js";
 import { ViewUI } from "../../lib/gtdf/views/ViewUI.js";
 
+@Route("error")
+@Singleton()
 export default class ErrorView extends ViewUI {
 
     private static readonly DEFAULT_ERROR_CODE = 404;
@@ -20,6 +24,7 @@ export default class ErrorView extends ViewUI {
 
     public show(params: string[], container: UIComponent) {
             
+        this.clean();
         const code = parseInt(params[0]);
         let error = getErrorByCode(code);
         
